@@ -1,7 +1,9 @@
 from django.conf.urls import url
 
 from .views import *
+#from . import views
 
+app_name = "courses"
 
 urlpatterns = [
     url(r'^$', course_list, name="list"),

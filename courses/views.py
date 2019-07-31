@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
-from django.core.urlresolvers import reverse_lazy
+#from django.core.urlresolvers import reverse 
+#from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.views.generic.edit import (
     CreateView,
     UpdateView,
@@ -13,7 +14,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 def course_list(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         courses = Course.objects.all()
         return render(request, 'courses/course_list.html', {'object_list': courses})
     else:
