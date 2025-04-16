@@ -17,17 +17,33 @@ class Course(models.Model):
             return True
         else:
             return False
-"""
-class Student():
-    def approval_percentaje(self, score, scale):
+        
+
+class Student:
+    def approval_percentage(self, score, scale):
+        # Validar que 'score' sea numérico.
+        if not isinstance(score, (int, float)):
+            return "La nota debe ser un número"
+        # Validar que 'scale' sea numérico.
+        if not isinstance(scale, (int, float)):
+            return "La escala debe ser un número"
+        # Verificar si la escala es cero para evitar división por cero.
+        if scale == 0:
+            return "La escala no puede ser cero"
         try:
-            percentaje = (score*100)/scale
-            return percentaje
-        except Exception, error:
-            return error
-    def student_registration(self, course):
-        if course.is_available:
-            return "Estudiante puede matricularse"
+            result = (score * 100) / scale
+            return result
+        except Exception as error:
+            return f"Error: {error}"
+        
+    def student_registration(self, course): 
+        if course.is_available: 
+            return "Estudiante puede matricularse" 
         else:
             return "Estudiante no se puede matricular"
-"""
+
+    def approved_course(self, student): 
+        if student.approval_percentage >= 90: 
+            return "El estudiante aprobo el curso" 
+        else: 
+            return "El estudiante no aprobo el curso"
